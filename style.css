@@ -1,0 +1,42 @@
+/* Definição de variáveis de cores baseadas na imagem fornecida */
+:root {
+    --bg-dark: #121212;
+    --bg-card: #1a1a1a;
+    --fintech-green: #00ff44;
+    --fintech-yellow: #fcd34d;
+}
+
+/* Classes utilitárias personalizadas */
+.bg-fintech-dark {
+    background-color: var(--bg-dark);
+}
+
+.bg-fintech-card {
+    background-color: var(--bg-card);
+}
+
+.text-fintech-green {
+    color: var(--fintech-green);
+}
+
+.text-fintech-yellow {
+    color: var(--fintech-yellow);
+}
+
+.border-fintech-green {
+    border-color: var(--fintech-green);
+}
+
+.accent-fintech-green {
+    accent-color: var(--fintech-green);
+}
+
+/* Ajustes finos de inputs para simular o layout perfeitamente */
+input, select {
+    font-size: 0.95rem;
+}
+
+/* Remove a seta padrão do select no IE */
+select::-ms-expand {
+    display: none;
+}
