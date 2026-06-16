@@ -92,7 +92,7 @@
                     <div>
                         <label class="block text-fintech-green text-sm font-semibold mb-2">Valor</label>
                         <div class="relative">
-                            <input type="text" placeholder="R$0,00" class="w-full bg-fintech-card border border-gray-700 rounded-full py-3 px-6 text-gray-300 focus:outline-none focus:border-fintech-green transition">
+                            <input type="text" id="campo-valor" placeholder="R$0,00" class="w-full bg-fintech-card border border-gray-700 rounded-full py-3 px-6 text-gray-300 focus:outline-none focus:border-fintech-green transition">
                             <span class="material-icons-outlined text-gray-500 absolute right-4 top-3.5">calculate</span>
                         </div>
                     </div>
@@ -159,6 +159,7 @@
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
+            // 1. Controle dos campos de Recorrência
             const checkboxRecorrente = document.getElementById('checkbox-recorrente');
             const camposRecorrencia = document.getElementById('campos-recorrencia');
 
@@ -169,6 +170,25 @@
                     } else {
                         camposRecorrencia.classList.add('hidden');
                     }
+                });
+            }
+
+            // 2. Máscara Dinâmica de Moeda (R$ 0,00)
+            const campoValor = document.getElementById('campo-valor');
+            if (campoValor) {
+                campoValor.addEventListener('input', function(e) {
+                    let valor = e.target.value.replace(/\D/g, "");
+                    
+                    if (!valor) {
+                        e.target.value = "";
+                        return;
+                    }
+
+                    valor = (parseInt(valor) / 100).toFixed(2);
+                    valor = valor.replace(".", ",");
+                    valor = valor.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                    
+                    e.target.value = "R$ " + valor;
                 });
             }
         });
